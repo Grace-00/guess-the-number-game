@@ -6,6 +6,8 @@ let result = document.querySelector(".result")
 let attempt = document.getElementById("attempt")
 let button = document.getElementById("button")
 let guess = document.getElementById("guess")
+let playAgain = document.getElementsByClassName("playAgain")
+let playAgainButton = document.getElementById("playAgain")
 let count = 1
 
 //Listening for event "click" on submit and linking it to function to check guess
@@ -18,17 +20,28 @@ function checkGuess() {
 
     //Game logic: if the number guessed by the user is less than the number stored by the computer,
     if (guessValue < randomNumber) {
-        attempt.innerHTML = "Attempt n: " + count //show number attempt
+        attempt.innerHTML = "Attempt n: " + count; //show number attempt
         result.innerHTML = "Your guess is too low"; //tell user guess is too low
         count++ //increment attempt count
+        playAgain.style.display = "none";
+        playAgainButton.style.display = "none";
      } //else if number guessed by user is more than number stored by computer,
      else if (guessValue > randomNumber) {
-        attempt.innerHTML = "Attempt n: " + count //show number attempt
+        attempt.innerHTML = "Attempt n: " + count; //show number attempt
         result.innerHTML = "Your guess is too high"; //tell user guess is too high
         count++ //increment attempt count
+        playAgain.style.display = "none";
+        playAgainButton.style.display = "none";
      } else //else tell user they guessed correctly in n attempts
      {
-        attempt.innerHTML = "Attempt n: " + count //show number attempt
+        attempt.innerHTML = "Attempt n: " + count; //show number attempt
         result.innerHTML = "You guessed correctly in " + count++ + "attempts";
+        playAgain.innerHTML = "Do you want to play again?";
     }
+}
+
+playAgainButton.addEventListener("click", playAgain);
+
+function playAgain() {
+    location.reload();
 }
