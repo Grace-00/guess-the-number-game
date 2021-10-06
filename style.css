@@ -13,7 +13,7 @@ body {
     background-color: #121728;
     width: 400px;
     margin: 0 auto;
-    transform: translate(0%, 100%);
+    transform: translate(0%, 80%);
     padding: 20px;
 }
 
@@ -31,7 +31,13 @@ input[type="number"] {
 
 input[type="number"]:focus {
     outline: none;
-    border: 3px solid #5CA6E5;
+    border: 2px solid #5CA6E5;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input[type="submit"] {
@@ -47,4 +53,8 @@ input[type="submit"] {
     cursor: pointer;
     border: none;
 
+}
+
+.attempt, .result {
+    margin-top: 15px;
 }
