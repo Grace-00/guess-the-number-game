@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background-color: #000000;
+}
+.container {
+    background-color: #121728;
+    width: 400px;
+    margin: 0 auto;
+    transform: translate(0%, 100%);
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+}
+
+input[type="number"] {
+    width: 250px;
+    padding: 10px;
+    margin-top: 40px;
+    transition: 0.5s;
+    border: 2px solid #000000;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border: 3px solid #5CA6E5;
+}
+
+input[type="submit"] {
+    padding: 10px 10px;
+    background-color: #5CA6E5;
+    border-radius: 5px;
+    width: 100px;
+    margin-left: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    outline-color: transparent;
+    cursor: pointer;
+    border: none;
+
+}
