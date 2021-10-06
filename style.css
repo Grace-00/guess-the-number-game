@@ -9,6 +9,7 @@ body {
     color: #ffffff;
     background-color: #000000;
 }
+
 .container {
     background-color: #121728;
     width: 400px;
@@ -34,8 +35,7 @@ input[type="number"]:focus {
     border: 2px solid #5CA6E5;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -44,7 +44,6 @@ input[type="submit"] {
     padding: 10px 10px;
     background-color: #5CA6E5;
     border-radius: 5px;
-    width: 100px;
     margin-left: 5px;
     font-size: 1rem;
     font-weight: 700;
@@ -52,9 +51,21 @@ input[type="submit"] {
     outline-color: transparent;
     cursor: pointer;
     border: none;
+}
 
+.playBtn {
+    width: 100px;
+}
+
+.playAgainBtn {
+    margin-top: 15px;
+    width: 130px;
 }
 
 .attempt, .result {
     margin-top: 15px;
+}
+
+.attempt {
+    text-align: right;
 }
