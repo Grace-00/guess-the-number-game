@@ -47,6 +47,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type="submit"] {
+    text-transform: uppercase;
     padding: 10px 10px;
     background-color: #5CA6E5;
     border-radius: 5px;
