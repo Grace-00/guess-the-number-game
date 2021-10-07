@@ -12,18 +12,23 @@ body {
 
 .container {
     background-color: #121728;
-    width: 400px;
+    width: 80vw;
+    height: 100%;
     margin: 0 auto;
-    transform: translate(0%, 80%);
+    margin-top: 180px;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
 }
-
+.contents > div {
+  text-align: center;
+}
 .title {
     text-align: center;
 }
 
 input[type="number"] {
-    width: 250px;
+    width: 50%;
     padding: 10px;
     margin-top: 40px;
     transition: 0.5s;
@@ -35,7 +40,8 @@ input[type="number"]:focus {
     border: 2px solid #5CA6E5;
 }
 
-input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -68,4 +74,14 @@ input[type="submit"] {
 
 .attempt {
     text-align: right;
+}
+
+@media screen and (max-width: 324px) {
+    .contents > .inputs {
+        display: flex;
+    }
+    .playBtn {
+        margin-top: 39px;
+        height: 50px;
+    }
 }
