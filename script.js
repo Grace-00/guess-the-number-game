@@ -9,7 +9,7 @@ const guess = document.getElementById("guess")
 const paraPlayAgain = document.querySelector(".playAgain")
 const playAgainButton = document.getElementById("playAgain")
 
-let count = 1 //counter for attempts
+let count = 1 //starting counter for attempts
 
 //Listening for event "click" on submit and linking it to function to check guess and hide second button visibility
 button.addEventListener("click", checkGuess)
@@ -19,9 +19,10 @@ function checkGuess() {
     //Storing value guessed by user in variable
     let guessValue = document.getElementById("guess").value;
 
+    result.classList.add('transition')
+
     //Game logic: if the number guessed by the user is less than the number stored by the computer,
     if (guessValue === '' && randomNumber) {
-        count = 0
        result.textContent = 'Please insert a number to play'
     } else if (guessValue < randomNumber) {
         attempt.textContent = "Attempt n: " + count; //show number attempt
@@ -39,7 +40,7 @@ function checkGuess() {
         attempt.textContent = "Attempt n: " + count; //show number attempt
         result.textContent = "You guessed correctly in " + count++ + " attempts!";
         paraPlayAgain.textContent = "Do you want to play again?"
-        playAgainButton.style.visibility = "visible"; //show button visibility
+        playAgainButton.style.visibility = "visible"; //show button
         button.style.visibility = 'hidden';
     }
 }

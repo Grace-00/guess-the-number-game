@@ -5,15 +5,14 @@
 }
 
 body {
-    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     color: #ffffff;
     background-color: #000000;
 }
 
 .container {
     background-color: #121728;
-    width: 80vw;
-    height: 100%;
+    width: 50%;
     margin: 0 auto;
     margin-top: 180px;
     display: flex;
@@ -58,15 +57,26 @@ input[type="submit"] {
     outline-color: transparent;
     cursor: pointer;
     border: none;
+    box-shadow: 0 5px 3px rgba(0, 0, 0, 0.3);
 }
 
 .playBtn {
     width: 100px;
 }
 
+.playBtn:hover {
+    transition: background-color 0.5s ease-in-out;
+    background-color: #203547;
+}
+
 .playAgainBtn {
     margin-top: 15px;
     width: 130px;
+}
+
+.playAgainBtn:hover {
+    transition: background-color 0.5s ease-in-out;
+    background-color: #85c4fc;
 }
 
 .attempt, .result {
@@ -75,6 +85,10 @@ input[type="submit"] {
 
 .attempt {
     text-align: right;
+}
+
+.transition {
+    transition: all 5s ease;
 }
 
 @media screen and (max-width: 324px) {
