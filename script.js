@@ -10,7 +10,7 @@ const guess = document.getElementById("guess")
 const paraPlayAgain = document.querySelector(".playAgain")
 const playAgainButton = document.getElementById("playAgain")
 const subtitle = document.querySelector('.subtitle')
-
+const contents = document.querySelector('.contents')
 
 let count = 1 //starting counter for attempts
 
@@ -42,22 +42,23 @@ function checkGuess() {
     //Storing value guessed by user in variable
     let guessValue = document.getElementById("guess").value;
 
-    //result.classList.add('transition')
-
     //Game logic: if the number guessed by the user is less than the number stored by the computer,
     if (guessValue === '' && randomNumber || guessValue && guessValue > 30 || guessValue && guessValue < 0) {
-        result.textContent = 'Please insert a valid number to play'
+        result.textContent = 'Please enter a valid number to play'
+        animation()
+
     } else if (guessValue < randomNumber) {
         attempt.textContent = "Attempt n: " + count; //show number attempt
         result.textContent = "Your guess is too low!"; //tell user guess is too low
         count++ //increment attempt count
-
+        animation()
     }
     //else if number guessed by user is more than number stored by computer,
     else if (guessValue > randomNumber) {
         attempt.textContent = "Attempt n: " + count; //show number attempt
         result.textContent = "Your guess is too high!"; //tell user guess is too high
         count++ //increment attempt count
+        animation()
     } else //else tell user they guessed correctly in n attempts and ask if they want to play again
     {
         attempt.textContent = "Attempt n: " + count; //show number attempt
@@ -68,6 +69,13 @@ function checkGuess() {
     }
 }
 playAgainButton.addEventListener("click", playAgain)
+
+function animation() {
+    contents.classList.remove('animation');
+    window.requestAnimationFrame(() => {
+        contents.classList.add('animation');
+    });
+}
 
 function playAgain() { //reload the page to play again
     location.reload();

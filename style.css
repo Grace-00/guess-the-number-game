@@ -19,6 +19,7 @@ body {
     text-align: center;
     font-size: 4rem;
 }
+
 .title p {
     font-size: 2.5rem;
 }
@@ -26,12 +27,35 @@ body {
 .results p {
     font-size: 2rem;
 }
+
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+.animation {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
 }
 
 .contents {
@@ -42,15 +66,14 @@ body {
     border-radius: 15px;
 }
 
- .subtitle {
-     margin-top: 10px;
+.subtitle {
+    margin-top: 10px;
     display: none;
 }
 
 input[type="number"] {
     width: 100%;
     padding: 2rem;
-
     transition: 0.5s;
     border: 2px solid #000000;
 }
@@ -64,8 +87,7 @@ input[type="number"]:focus {
     border: 2px solid #5CA6E5;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -110,7 +132,6 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 35px;
 }
 
-
 @media screen and (max-width: 570px) {
     input[type="number"]::-webkit-input-placeholder {
         color: transparent;
@@ -121,12 +142,9 @@ input[type=number]::-webkit-outer-spin-button {
     input[type='number'] {
         width: 70%;
     }
-
     .inputs {
-
         margin: 40px auto;
     }
-
     .playAgainBtn {
         width: 50%;
     }
