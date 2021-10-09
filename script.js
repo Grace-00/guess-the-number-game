@@ -3,23 +3,46 @@ let randomNumber = Math.floor(Math.random() * 30) + 1
 
 //Storing HTML elements into variables to easily use them later + initialising variable for count
 const result = document.querySelector(".result")
+const title = document.querySelector('.title')
 const attempt = document.getElementById("attempt")
-const button = document.getElementById("button")
+const playBtn = document.getElementById("play")
 const guess = document.getElementById("guess")
 const paraPlayAgain = document.querySelector(".playAgain")
 const playAgainButton = document.getElementById("playAgain")
+const subtitle = document.querySelector('.subtitle')
+
 
 let count = 1 //starting counter for attempts
 
+window.addEventListener('resize', () =>{
+    if(window.innerWidth < 570) {
+        subtitle.style.display = 'block'
+    } else {
+        subtitle.style.display = 'none'
+    }
+})
+
 //Listening for event "click" on submit and linking it to function to check guess and hide second button visibility
-button.addEventListener("click", checkGuess)
+ playBtn.addEventListener("click", checkGuess)
+
+//Hiding "play again" button
 playAgainButton.style.visibility = "hidden";
+
+
+//Listening for Enter key event
+guess.addEventListener('keyup', (e)=> {
+    if(e.key === 'Enter') {
+        checkGuess()
+    }
+})
+
 //Creating function to check guess
 function checkGuess() {
+
     //Storing value guessed by user in variable
     let guessValue = document.getElementById("guess").value;
 
-    result.classList.add('transition')
+    //result.classList.add('transition')
 
     //Game logic: if the number guessed by the user is less than the number stored by the computer,
     if (guessValue === '' && randomNumber) {
