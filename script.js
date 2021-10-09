@@ -40,7 +40,7 @@ guess.addEventListener('keyup', (e) => {
 function checkGuess() {
 
     //Storing value guessed by user in variable
-    let guessValue = guess.value;
+    const guessValue = guess.value;
 
     //Game logic: if value is empty or is less than 0/more than 30
     if (guessValue === '' && randomNumber || guessValue && guessValue > 30 || guessValue && guessValue < 0) {
@@ -70,7 +70,7 @@ function checkGuess() {
         result.textContent = "You guessed correctly in " + count++ + " attempts!";
         paraPlayAgain.textContent = "Do you want to play again?"
         playAgainButton.style.visibility = "visible"; //show button
-        button.style.visibility = 'hidden';
+        playBtn.style.visibility = 'hidden';
     }
 }
 playAgainButton.addEventListener("click", playAgain)
