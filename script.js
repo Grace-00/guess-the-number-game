@@ -48,7 +48,7 @@ function checkGuess() {
         animation()
 
     } else if (guessValue < randomNumber) { //if the number guessed by the user is less than the number stored by the computer,
-        attempt.textContent = "Attempt n: " + count; //show number attempt
+        attempt.textContent = "Attempt n: " + count++; //show number attempt
         result.textContent = "Your guess is too low!"; //tell user guess is too low
         const currentGuessValue = guessValue //store current value in a variable
         if (currentGuessValue === guessValue) { //compare current value to previous value: if same
@@ -60,7 +60,7 @@ function checkGuess() {
     }
     //else if number guessed by user is more than number stored by computer,
     else if (guessValue > randomNumber) {
-        attempt.textContent = "Attempt n: " + count; //show number attempt
+        attempt.textContent = "Attempt n: " + count++; //show number attempt
         result.textContent = "Your guess is too high!"; //tell user guess is too high
         const currentGuessValue = guessValue //store current value in a variable
         if (currentGuessValue === guessValue) { //compare current value to previous value: if same
