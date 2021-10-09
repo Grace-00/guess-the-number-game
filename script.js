@@ -62,12 +62,17 @@ function checkGuess() {
     else if (guessValue > randomNumber) {
         attempt.textContent = "Attempt n: " + count; //show number attempt
         result.textContent = "Your guess is too high!"; //tell user guess is too high
-        count++ //increment attempt count
+        const currentGuessValue = guessValue //store current value in a variable
+        if (currentGuessValue === guessValue) { //compare current value to previous value: if same
+            count   //don't increment attempt count
+        } else {
+            count++ //increment attempt count
+        }
         animation()
     } else //else tell user they guessed correctly in n attempts and ask if they want to play again
     {
         attempt.textContent = "Attempt n: " + count; //show number attempt
-        result.textContent = "You guessed correctly in " + count++ + " attempts!";
+        result.textContent = "You guessed correctly in " + count + " attempts!";
         paraPlayAgain.textContent = "Do you want to play again?"
         playAgainButton.style.visibility = "visible"; //show button
         playBtn.style.visibility = 'hidden';
