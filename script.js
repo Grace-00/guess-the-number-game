@@ -14,8 +14,8 @@ const subtitle = document.querySelector('.subtitle')
 
 let count = 1 //starting counter for attempts
 
-window.addEventListener('resize', () =>{
-    if(window.innerWidth < 570) {
+window.addEventListener('resize', () => {
+    if (window.innerWidth < 570) {
         subtitle.style.display = 'block'
     } else {
         subtitle.style.display = 'none'
@@ -23,15 +23,15 @@ window.addEventListener('resize', () =>{
 })
 
 //Listening for event "click" on submit and linking it to function to check guess and hide second button visibility
- playBtn.addEventListener("click", checkGuess)
+playBtn.addEventListener("click", checkGuess)
 
 //Hiding "play again" button
 playAgainButton.style.visibility = "hidden";
 
 
 //Listening for Enter key event
-guess.addEventListener('keyup', (e)=> {
-    if(e.key === 'Enter') {
+guess.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
         checkGuess()
     }
 })
@@ -45,21 +45,21 @@ function checkGuess() {
     //result.classList.add('transition')
 
     //Game logic: if the number guessed by the user is less than the number stored by the computer,
-    if (guessValue === '' && randomNumber) {
-       result.textContent = 'Please insert a number to play'
+    if (guessValue === '' && randomNumber || guessValue && guessValue > 30 || guessValue && guessValue < 0) {
+        result.textContent = 'Please insert a valid number to play'
     } else if (guessValue < randomNumber) {
         attempt.textContent = "Attempt n: " + count; //show number attempt
         result.textContent = "Your guess is too low!"; //tell user guess is too low
         count++ //increment attempt count
 
-     } //else if number guessed by user is more than number stored by computer,
-     else if (guessValue > randomNumber) {
+    }
+    //else if number guessed by user is more than number stored by computer,
+    else if (guessValue > randomNumber) {
         attempt.textContent = "Attempt n: " + count; //show number attempt
         result.textContent = "Your guess is too high!"; //tell user guess is too high
         count++ //increment attempt count
-
-     }  else //else tell user they guessed correctly in n attempts and ask if they want to play again
-     {
+    } else //else tell user they guessed correctly in n attempts and ask if they want to play again
+    {
         attempt.textContent = "Attempt n: " + count; //show number attempt
         result.textContent = "You guessed correctly in " + count++ + " attempts!";
         paraPlayAgain.textContent = "Do you want to play again?"
