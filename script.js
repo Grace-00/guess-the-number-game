@@ -14,7 +14,7 @@ const contents = document.querySelector('.contents')
 
 let count = 1 //starting counter for attempts
 
-window.addEventListener('resize', () => {
+window.addEventListener('resize', () => { //show subtitle on viewports that are smaller than 570px
     if (window.innerWidth < 570) {
         subtitle.style.display = 'block'
     } else {
@@ -40,17 +40,22 @@ guess.addEventListener('keyup', (e) => {
 function checkGuess() {
 
     //Storing value guessed by user in variable
-    let guessValue = document.getElementById("guess").value;
+    let guessValue = guess.value;
 
-    //Game logic: if the number guessed by the user is less than the number stored by the computer,
+    //Game logic: if value is empty or is less than 0/more than 30
     if (guessValue === '' && randomNumber || guessValue && guessValue > 30 || guessValue && guessValue < 0) {
-        result.textContent = 'Please enter a valid number to play'
+        result.textContent = 'Please enter a valid number to play' //show this message to user
         animation()
 
-    } else if (guessValue < randomNumber) {
+    } else if (guessValue < randomNumber) { //if the number guessed by the user is less than the number stored by the computer,
         attempt.textContent = "Attempt n: " + count; //show number attempt
         result.textContent = "Your guess is too low!"; //tell user guess is too low
-        count++ //increment attempt count
+        const currentGuessValue = guessValue //store current value in a variable
+        if (currentGuessValue === guessValue) { //compare current value to previous value: if same
+            count   //don't increment attempt count
+        } else {
+            count++ //increment attempt count
+        }
         animation()
     }
     //else if number guessed by user is more than number stored by computer,
@@ -70,7 +75,7 @@ function checkGuess() {
 }
 playAgainButton.addEventListener("click", playAgain)
 
-function animation() {
+function animation() { //animation for card
     contents.classList.remove('animation');
     window.requestAnimationFrame(() => {
         contents.classList.add('animation');
