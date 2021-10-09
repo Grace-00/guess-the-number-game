@@ -11,16 +11,20 @@ html {
 
 body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    /* font-size: 2.5rem; */
     color: #ffffff;
     background-color: #000000;
 }
 
-h2 {
+.title h2 {
+    text-align: center;
     font-size: 4rem;
 }
-p {
+.title p {
     font-size: 2.5rem;
+}
+
+.results p {
+    font-size: 2rem;
 }
 .container {
     display: flex;
@@ -39,6 +43,7 @@ p {
 }
 
  .subtitle {
+     margin-top: 10px;
     display: none;
 }
 
@@ -71,7 +76,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .playBtn, .playAgainBtn {
-    width: 100%;
+    width: 50%;
     text-transform: uppercase;
     padding: 10px 10px;
     background-color: #5CA6E5;
@@ -86,10 +91,6 @@ input[type=number]::-webkit-outer-spin-button {
     box-shadow: 0 5px 3px rgba(0, 0, 0, 0.3);
 }
 
-.playBtn {
-    width: 100px;
-}
-
 .playBtn:hover {
     transition: background-color 0.5s ease-in-out;
     background-color: #203547;
@@ -97,7 +98,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .playAgainBtn {
     margin-top: 15px;
-    width: 130px;
+    width: 100%;
 }
 
 .playAgainBtn:hover {
@@ -109,8 +110,24 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 35px;
 }
 
+
 @media screen and (max-width: 570px) {
     input[type="number"]::-webkit-input-placeholder {
         color: transparent;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    input[type='number'] {
+        width: 70%;
+    }
+
+    .inputs {
+
+        margin: 40px auto;
+    }
+
+    .playAgainBtn {
+        width: 50%;
     }
 }
