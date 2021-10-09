@@ -2,36 +2,56 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    border: 0;
+}
+
+html {
+    font-size: 62.5%;
 }
 
 body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    /* font-size: 2.5rem; */
     color: #ffffff;
     background-color: #000000;
 }
 
+h2 {
+    font-size: 4rem;
+}
+p {
+    font-size: 2.5rem;
+}
 .container {
-    background-color: #121728;
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 180px;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-}
-.contents > div {
-  text-align: center;
-}
-.title {
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
+.contents {
+    padding: 40px;
+    background-color: #121728;
+    width: 90vw;
+    margin: 15px;
+    border-radius: 15px;
+}
+
+/* .subtitle {
+    display: none;
+} */
+
 input[type="number"] {
-    width: 50%;
-    padding: 10px;
-    margin-top: 40px;
+    width: 100%;
+    padding: 2rem;
+
     transition: 0.5s;
     border: 2px solid #000000;
+}
+
+input[type="number"]::placeholder {
+    font-size: 2rem;
 }
 
 input[type="number"]:focus {
@@ -45,13 +65,19 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-input[type="submit"] {
+.inputs {
+    display: flex;
+    margin-top: 40px;
+}
+
+.playBtn, .playAgainBtn {
+    width: 100%;
     text-transform: uppercase;
     padding: 10px 10px;
     background-color: #5CA6E5;
     border-radius: 5px;
     margin-left: 5px;
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 700;
     color: white;
     outline-color: transparent;
@@ -80,23 +106,14 @@ input[type="submit"] {
 }
 
 .attempt, .result {
-    margin-top: 15px;
+    margin-top: 35px;
 }
 
-.attempt {
-    text-align: right;
-}
-
-.transition {
-    transition: all 5s ease;
-}
-
-@media screen and (max-width: 324px) {
-    .contents > .inputs {
-        display: flex;
-    }
-    .playBtn {
-        margin-top: 39px;
-        height: 50px;
+@media screen and (max-width: 570px) {
+    /* h2 {
+        font-size: 2.5rem;
+    } */
+    input[type="number"]::-webkit-input-placeholder {
+        color: transparent;
     }
 }
