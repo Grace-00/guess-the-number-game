@@ -38,7 +38,6 @@ guess.addEventListener('keyup', (e) => {
 
 //Creating function to check guess
 function checkGuess() {
-
     //Storing value guessed by user in variable
     const guessValue = guess.value;
 
@@ -46,33 +45,34 @@ function checkGuess() {
     if (guessValue === '' && randomNumber || guessValue && guessValue > 30 || guessValue && guessValue < 0) {
         result.textContent = 'Please enter a valid number to play' //show this message to user
         animation()
-
     } else if (guessValue < randomNumber) { //if the number guessed by the user is less than the number stored by the computer,
-        attempt.textContent = "Attempt n: " + count++; //show number attempt
-        result.textContent = "Your guess is too low!"; //tell user guess is too low
-        const currentGuessValue = guessValue //store current value in a variable
-        if (currentGuessValue === guessValue) { //compare current value to previous value: if same
-            count   //don't increment attempt count
+        const previousValue = getValue()
+        sessionStorage.setItem('value', guessValue)
+        if (previousValue && guessValue && previousValue === guessValue) { //compare current value to previous value: if same
+            attempt.textContent = `Attempt n: ${count}`; //show number attempt
+            result.textContent = "Nope, you've already tried that! Keep guessing!"
         } else {
-            count++ //increment attempt count
+            attempt.textContent = `Attempt n: ${(guessValue && previousValue ? ++count : count)}`;
+            result.textContent = "Your guess is too low!";
         }
         animation()
     }
     //else if number guessed by user is more than number stored by computer,
     else if (guessValue > randomNumber) {
-        attempt.textContent = "Attempt n: " + count++; //show number attempt
-        result.textContent = "Your guess is too high!"; //tell user guess is too high
-        const currentGuessValue = guessValue //store current value in a variable
-        if (currentGuessValue === guessValue) { //compare current value to previous value: if same
-            count   //don't increment attempt count
+        const previousValue = getValue()
+        sessionStorage.setItem('value', guessValue)
+        if (previousValue && guessValue && previousValue === guessValue) { //compare current value to previous value: if same
+            attempt.textContent = `Attempt n: ${count}`; //show number attempt
+            result.textContent = "Nope, you've already tried that! Keep guessing!"
         } else {
-            count++ //increment attempt count
+            attempt.textContent = `Attempt n: ${(guessValue && previousValue ? ++count : count)}`;
+            result.textContent = "Your guess is too high!";
         }
         animation()
     } else //else tell user they guessed correctly in n attempts and ask if they want to play again
     {
-        attempt.textContent = "Attempt n: " + count; //show number attempt
-        result.textContent = "You guessed correctly in " + count + " attempts!";
+        attempt.textContent = `Attempt n: ${count}`; //show number attempt
+        result.textContent = "Congratulations! You guessed correctly in " + count + " attempts!";
         paraPlayAgain.textContent = "Do you want to play again?"
         playAgainButton.style.visibility = "visible"; //show button
         playBtn.style.visibility = 'hidden';
@@ -87,6 +87,11 @@ function animation() { //animation for card
     });
 }
 
+function getValue() {
+    return sessionStorage.getItem('value')
+}
+
 function playAgain() { //reload the page to play again
     location.reload();
+    sessionStorage.clear()
 }
