@@ -44,6 +44,7 @@ function checkGuess() {
     //Game logic: if value is empty or is less than 0/more than 30
     if (guessValue === '' && randomNumber || guessValue && guessValue > 30 || guessValue && guessValue < 0) {
         result.textContent = 'Please enter a valid number to play' //show this message to user
+        guess.value = ''
         animation()
     } else if (guessValue < randomNumber) { //if the number guessed by the user is less than the number stored by the computer,
         const previousValue = getValue()
