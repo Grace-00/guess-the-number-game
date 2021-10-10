@@ -1,6 +1,6 @@
 # Guess-the-number game
 
-## Tech used
+## Tech
 
 - HTML, CSS (media queries, animation), JavaScript (sessionStorage, if/else, template literals)
 
