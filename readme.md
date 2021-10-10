@@ -2,7 +2,7 @@
 
 ## Tech used
 
-- HTML, CSS (media queries, animation), JavaScript (sessionStorage)
+- HTML, CSS (media queries, animation), JavaScript (sessionStorage, if/else, template literals)
 
 ## Project explanation
 
