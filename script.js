@@ -7,7 +7,6 @@ const title = document.querySelector('.title')
 const attempt = document.getElementById("attempt")
 const playBtn = document.getElementById("play")
 const guess = document.getElementById("guess")
-const paraPlayAgain = document.querySelector(".playAgain")
 const playAgainButton = document.getElementById("playAgain")
 const subtitle = document.querySelector('.subtitle')
 const contents = document.querySelector('.contents')
@@ -36,6 +35,14 @@ guess.addEventListener('keyup', (e) => {
     }
 })
 
+const displayResult = (message) => {
+    result.textContent = message
+}
+
+const displayAttempt = (attemptCount) => {
+    attempt.textContent = attemptCount
+}
+
 //Creating function to check guess
 function checkGuess() {
     //Storing value guessed by user in variable
@@ -46,21 +53,20 @@ function checkGuess() {
         const previousValue = getValue()
         sessionStorage.setItem('value', guessValue)
         if (previousValue && guessValue && previousValue === guessValue) { //compare current value to previous value: if same
-            attempt.textContent = `Attempt n: ${count}`; //show number attempt
-            result.textContent = "Nope, you've already tried that! Keep guessing!"
+            displayAttempt(`Attempt n: ${count}`);
+            displayResult("Nope, you've already tried that! Keep guessing!")
         } else {
-            attempt.textContent = `Attempt n: ${(guessValue && previousValue ? ++count : count)}`;
-            result.textContent = guessValue > randomNumber ? "Your guess is too high!" : 'Your guess is too low';
+            displayAttempt(`Attempt n: ${(guessValue && previousValue ? ++count : count)}`);
+            displayResult(guessValue > randomNumber ? "Your guess is too high!" : 'Your guess is too low')
         }
         animation()
     } else if (guessValue === '' && randomNumber || guessValue && guessValue > 30 || guessValue && guessValue < 0) {
-        result.textContent = 'Please enter a valid number to play' //show this message to user
+        displayResult('Please enter a valid number to play')
         guess.value = ''
         animation()
     } else {
-        attempt.textContent = `Attempt n: ${count}`; //show number attempt
-        result.textContent = "Congratulations! You guessed correctly in " + count + " attempts!";
-        paraPlayAgain.textContent = "Do you want to play again?"
+        displayAttempt(`Attempt n: ${count}`);
+        displayResult("Congratulations! You guessed correctly in " + count + " attempts! Do you want to play again?");
         playAgainButton.style.visibility = "visible"; //show button
         playBtn.style.visibility = 'hidden';
     }
