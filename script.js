@@ -49,23 +49,28 @@ function checkGuess() {
     const guessValue = guess.value;
 
     //Game logic: if value is empty or is less than 0/more than 30
-    if (Number(guessValue) !== randomNumber) {
-        const previousValue = getValue()
+    if (guessValue === '' && randomNumber || guessValue && guessValue > 30 || guessValue && guessValue < 0) {
+        displayResult('Please enter a valid number to play')
+        guess.value = ''
+        animation()
+    } else if (Number(guessValue) !== randomNumber) {
+        const previousValue = (guessValue && guessValue >= 0 || guessValue <= 30 ? getValue() : '')
         sessionStorage.setItem('value', guessValue)
         if (previousValue && guessValue && previousValue === guessValue) { //compare current value to previous value: if same
             displayAttempt(`Attempt n: ${count}`);
             displayResult("Nope, you've already tried that! Keep guessing!")
-        } else {
-            displayAttempt(`Attempt n: ${(guessValue && previousValue ? ++count : count)}`);
-            displayResult(guessValue > randomNumber ? "Your guess is too high!" : 'Your guess is too low')
+        } else if (playBtn.style.visibility === "hidden") {
+            displayAttempt('')
+            displayResult('Hey, that does not count! You have to start a new game :)')
         }
-        animation()
-    } else if (guessValue === '' && randomNumber || guessValue && guessValue > 30 || guessValue && guessValue < 0) {
-        displayResult('Please enter a valid number to play')
-        guess.value = ''
+         else {
+            displayAttempt(`Attempt n: ${(guessValue && previousValue ? ++count : count)}`);
+                displayResult(guessValue > randomNumber ? "Your guess is too high!" : 'Your guess is too low')
+        }
         animation()
     } else {
         displayAttempt(`Attempt n: ${count}`);
+        guess.value = ''
         displayResult("Congratulations! You guessed correctly in " + count + " attempts! Do you want to play again?");
         playAgainButton.style.visibility = "visible"; //show button
         playBtn.style.visibility = 'hidden';
@@ -84,7 +89,7 @@ function getValue() {
     return sessionStorage.getItem('value')
 }
 
-function playAgain() { //reload the page to play again
+function playAgain() {
     location.reload();
     sessionStorage.clear()
 }
